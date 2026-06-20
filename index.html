@@ -517,6 +517,19 @@
         }
         .modal-close:hover { color: var(--danger); transform: rotate(90deg); }
         
+        /* ===== VOUCHER BULK CONTROLS ===== */
+        .voucher-bulk-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 14px;
+            padding: 16px;
+            background: #f8fafc;
+            border-radius: var(--radius);
+            margin-bottom: 16px;
+        }
+        
+        .mt-15 { margin-top: 15px; }
+        
         /* ===== PRINT ===== */
         @media print {
             .sidebar, .no-print, .action-bar, .btn, .header, .tabs { display: none !important; }
@@ -945,7 +958,7 @@
     </div>
     
     <!-- ============================================================ -->
-    <!-- PAGE: FEE MANAGEMENT -->
+    <!-- PAGE: FEE MANAGEMENT (with VOUCHER) -->
     <!-- ============================================================ -->
     <div id="page-fee" class="page">
         <div class="card">
@@ -956,6 +969,7 @@
                 <button class="btn btn-primary" onclick="showFeeTab('payment')">💰 Payment</button>
                 <button class="btn btn-primary" onclick="showFeeTab('history')">📋 History</button>
                 <button class="btn btn-primary" onclick="showFeeTab('voucher')">📝 Voucher</button>
+                <button class="btn btn-primary" onclick="showFeeTab('bulk-voucher')">📚 Bulk Voucher</button>
             </div>
             
             <!-- Fee Dashboard -->
@@ -996,7 +1010,7 @@
                 <div id="feeHistoryList"></div>
             </div>
             
-            <!-- Fee Voucher -->
+            <!-- Individual Voucher -->
             <div id="fee-voucher" class="tab-content">
                 <div style="display:flex; gap:20px; flex-wrap:wrap;">
                     <div style="flex:1; min-width:220px;">
@@ -1011,6 +1025,31 @@
                             <button class="btn btn-whatsapp" onclick="feeSendVoucherWA()"><i class="fab fa-whatsapp"></i> Send</button>
                         </div>
                     </div>
+                </div>
+            </div>
+            
+            <!-- Bulk Voucher (Class Wise) -->
+            <div id="fee-bulk-voucher" class="tab-content">
+                <div class="voucher-bulk-controls">
+                    <div class="form-group">
+                        <label>Select Class</label>
+                        <select id="fvBulkClass">
+                            <option value="">-- Select Class --</option>
+                            <option>Playgroup</option><option>Nursery</option><option>Prep</option>
+                            <option>1st</option><option>2nd</option><option>3rd</option><option>4th</option>
+                            <option>5th</option><option>6th</option><option>7th</option><option>8th</option>
+                            <option>9th</option><option>10th</option>
+                        </select>
+                    </div>
+                    <div class="form-group"><label>Month</label><select id="fvBulkMonth"></select></div>
+                    <div class="form-group"><label>Year</label><select id="fvBulkYear"></select></div>
+                    <div class="form-group" style="justify-content:flex-end;">
+                        <button class="btn btn-primary" onclick="generateBulkVouchers()"><i class="fas fa-file-pdf"></i> Generate Class Vouchers</button>
+                    </div>
+                </div>
+                <div id="bulkVoucherDisplay" class="mt-15"></div>
+                <div class="action-bar no-print">
+                    <button class="btn btn-warning" onclick="printBulkVouchers()"><i class="fas fa-print"></i> Print All</button>
                 </div>
             </div>
         </div>
@@ -1910,24 +1949,30 @@ function populateMonths() {
     // Also populate fee months
     var fpMonth = document.getElementById('fpMonth');
     var fvMonth = document.getElementById('fvMonth');
+    var fvBulkMonth = document.getElementById('fvBulkMonth');
     for (var m2 = 0; m2 < months.length; m2++) {
         var opt2 = document.createElement('option');
         opt2.value = m2 + 1;
         opt2.textContent = months[m2];
         fpMonth.appendChild(opt2.cloneNode(true));
         fvMonth.appendChild(opt2.cloneNode(true));
+        fvBulkMonth.appendChild(opt2.cloneNode(true));
     }
     fpMonth.value = new Date().getMonth() + 1;
     fvMonth.value = new Date().getMonth() + 1;
+    fvBulkMonth.value = new Date().getMonth() + 1;
     
     var fvYear = document.getElementById('fvYear');
+    var fvBulkYear = document.getElementById('fvBulkYear');
     for (var y2 = currentYear - 5; y2 <= currentYear + 1; y2++) {
         var opt3 = document.createElement('option');
         opt3.value = y2;
         opt3.textContent = y2;
         fvYear.appendChild(opt3);
+        fvBulkYear.appendChild(opt3.cloneNode(true));
     }
     fvYear.value = currentYear;
+    fvBulkYear.value = currentYear;
 }
 
 function loadSalaryEmployee() {
@@ -2197,6 +2242,9 @@ function feeLoadHistory() {
     container.innerHTML = html;
 }
 
+// ================================================================
+// FEE VOUCHER - INDIVIDUAL
+// ================================================================
 function feeGenerateVoucher() {
     var id = document.getElementById('fvId').value;
     var month = document.getElementById('fvMonth').value;
@@ -2268,6 +2316,72 @@ function feeSendVoucherWA() {
     
     var msg = '*The Bright Light Link School Panjgur*\\n\\n📝 Fee Voucher\\n\\nStudent: ' + student.name + '\\nID: ' + student.id + '\\nMonth: ' + month + ' ' + year + '\\nMonthly Fee: Rs.' + (student.monthlyFee || 0) + '\\nPaid: Rs.' + paid + '\\nBalance: Rs.' + due + '\\n\\nPlease clear the balance.';
     sendWA(student.mobile, msg);
+}
+
+// ================================================================
+// BULK VOUCHER (CLASS WISE)
+// ================================================================
+function generateBulkVouchers() {
+    var cls = document.getElementById('fvBulkClass').value;
+    if (!cls) { alert('Please select a class!'); return; }
+    
+    var students = getData('students') || [];
+    var filtered = students.filter(function(s) { return s.class === cls; });
+    
+    if (!filtered.length) {
+        document.getElementById('bulkVoucherDisplay').innerHTML = '<p style="color:#e74c3c;">No students found in this class!</p>';
+        return;
+    }
+    
+    var month = document.getElementById('fvBulkMonth').value;
+    var year = document.getElementById('fvBulkYear').value;
+    
+    var html = '<div style="background:#1a2a4a;color:white;padding:10px 16px;border-radius:10px;margin-bottom:12px;display:flex;justify-content:space-between;">' +
+        '<span><strong>📚 Class ' + cls + '</strong> — ' + filtered.length + ' students</span>' +
+        '<span>' + month + ' ' + year + '</span>' +
+        '</div>';
+    
+    for (var i = 0; i < filtered.length; i++) {
+        var s = filtered[i];
+        var fees = getData('fees') || [];
+        var monthFees = fees.filter(function(f) {
+            return f.student_id === s.id && f.month === month && f.type === 'Monthly';
+        });
+        var paid = 0;
+        for (var j = 0; j < monthFees.length; j++) {
+            paid += monthFees[j].amount || 0;
+        }
+        var due = (s.monthlyFee || 0) - paid;
+        
+        html += '<div class="voucher" style="margin-bottom:10px;page-break-after:always;">' +
+            '<div class="v-header"><h3>🏫 The Bright Light Link School</h3><p style="color:white;font-size:0.7rem;margin:2px 0;">Panjgur</p></div>' +
+            '<div style="text-align:center;"><h4>FEE VOUCHER</h4><p style="font-size:0.75rem;color:#6c8aa8;">' + month + ' ' + year + '</p></div>' +
+            '<div class="v-row"><span><strong>Student ID</strong></span><span>' + s.id + '</span></div>' +
+            '<div class="v-row"><span><strong>Name</strong></span><span>' + s.name + '</span></div>' +
+            '<div class="v-row"><span><strong>Class</strong></span><span>' + s.class + '</span></div>' +
+            '<div class="v-row"><span><strong>Father</strong></span><span>' + s.father + '</span></div>' +
+            '<div class="v-row"><span><strong>Monthly Fee</strong></span><span>Rs.' + (s.monthlyFee || 0) + '</span></div>' +
+            '<div class="v-row"><span><strong>Paid</strong></span><span style="color:#27ae60;">Rs.' + paid + '</span></div>' +
+            '<div class="v-total"><span><strong>Balance</strong></span><span>Rs.' + due + '</span></div>' +
+            '<div style="text-align:center;margin-top:8px;font-size:0.6rem;color:#6c8aa8;border-top:1px solid #e8edf4;padding-top:6px;">' +
+            'Copy: Student Copy' +
+            '</div></div>';
+    }
+    
+    document.getElementById('bulkVoucherDisplay').innerHTML = html;
+    showToast('resultToast', '✅ ' + filtered.length + ' vouchers generated for class ' + cls + '!', 'success');
+}
+
+function printBulkVouchers() {
+    var content = document.getElementById('bulkVoucherDisplay').innerHTML;
+    if (!content || content.includes('No students')) { alert('Generate vouchers first!'); return; }
+    
+    var win = window.open('', '_blank');
+    win.document.write('<html><head><title>Class Vouchers</title><style>body{font-family:sans-serif;padding:20px;background:#f0f2f5;}.voucher{border:2px solid #1a2a4a;border-radius:10px;padding:18px;max-width:500px;margin:10px auto;background:white;page-break-after:always;}.v-header{background:#1a2a4a;color:white;text-align:center;padding:8px;border-radius:10px 10px 0 0;margin:-18px -18px 12px -18px;}.v-header h3{color:#f9ca24;margin:0;}.v-row{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #f0f2f5;}.v-total{background:#27ae60;color:white;padding:8px 14px;border-radius:8px;display:flex;justify-content:space-between;margin-top:8px;font-weight:700;}</style></head><body>');
+    win.document.write(content);
+    win.document.write('</body></html>');
+    win.document.close();
+    win.print();
 }
 
 // ================================================================
@@ -2500,15 +2614,9 @@ function updateSystemInfo() {
     document.getElementById('infoEmployees').textContent = employees.length;
 }
 
-// Call updateSystemInfo on load
-document.addEventListener('DOMContentLoaded', function() {
-    setTimeout(updateSystemInfo, 500);
-});
-
 // ================================================================
 // INITIALIZATION
 // ================================================================
-// Set today's date for date inputs
 document.addEventListener('DOMContentLoaded', function() {
     var today = new Date().toISOString().split('T')[0];
     var dateInputs = document.querySelectorAll('input[type="date"]');
@@ -2523,6 +2631,7 @@ document.addEventListener('DOMContentLoaded', function() {
     loadSavedResults();
     loadSalaryHistory();
     feeInit();
+    setTimeout(updateSystemInfo, 500);
 });
 </script>
 </body>
