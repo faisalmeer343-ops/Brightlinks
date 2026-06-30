@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TBLS – Premium School Management System</title>
+  <title>TASP – Premium School Management System</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js">
   </script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -1237,7 +1237,7 @@
     <div class="top-bar">
       <h1>
         <span class="icon">🏫</span>
-        THE BRIGHT LINK SCHOOL PANJGUR
+        THE BRIGHT LINK TASP PANJGUR
         <small>Success With Wisdom - Management System</small>
       </h1>
       <div class="top-stats">
@@ -2577,7 +2577,7 @@
       display.innerHTML = `
         <div style="border:2px solid #1a237e;border-radius:12px;padding:20px;max-width:650px;margin:auto;">
           <div style="text-align:center;border-bottom:3px solid #1a237e;padding-bottom:10px;margin-bottom:12px;">
-            <h2 style="color:#1a237e;font-size:20px;">🏫 THE BRIGHT LINK SCHOOL PANJGUR</h2>
+            <h2 style="color:#1a237e;font-size:20px;">🏫 THE BRIGHT LINK TASP PANJGUR</h2>
             <h3 style="color:#f9a825;font-size:15px;">PAY SLIP</h3>
             <p style="color:#666;font-size:11px;">${month} ${year}</p>
           </div>
@@ -2887,7 +2887,7 @@
       const s = getStudent(id);
       if (!s) return;
       let msg = '═══════════════════════════════════════\n';
-      msg += `  🏫 THE BRIGHT LINK SCHOOL PANJGUR - ACCOUNT STATEMENT\n`;
+      msg += `  🏫 THE BRIGHT LINK TASP PANJGUR - ACCOUNT STATEMENT\n`;
       msg += '═══════════════════════════════════════\n\n';
       msg += `👤 ${s.name} (${s.id})\n👨 Father: ${s.father}\n📚 Class: ${s.class} (${s.section || 'A'})\n📱 Phone: ${s.phone || 'N/A'}\n📍 Address: ${s.address || 'N/A'}\n`;
       if (s.status) msg += `📌 Status: ${s.status}${s.discount ? ' (' + s.discount + '% off)' : ''}\n`;
@@ -3197,7 +3197,7 @@
         @media print{body{padding:20px;}}</style>
         </head><body>
         <div class="form">
-          <div class="header"><h1>🏫 THE BRIGHT LINK SCHOOL PANJGUR</h1><h2>Student Admission Form</h2></div>
+          <div class="header"><h1>🏫 THE BRIGHT LINK TASP PANJGUR</h1><h2>Student Admission Form</h2></div>
           <div class="grid">
             <div><strong>Name:</strong> ${name}</div>
             <div><strong>Father:</strong> ${father}</div>
@@ -3279,7 +3279,7 @@
       const a = savedAdmissions[index];
       if (!a) { showToast('⚠️ Record not found!', true); return; }
       let msg = '═══════════════════════════════════════\n';
-      msg += `  🏫 THE BRIGHT LINK SCHOOL PANJGUR - ADMISSION RECORD\n`;
+      msg += `  🏫 THE BRIGHT LINK TASP PANJGUR - ADMISSION RECORD\n`;
       msg += '═══════════════════════════════════════\n\n';
       msg += `👤 Name: ${a.name}\n👨 Father: ${a.father}\n👩 Guardian: ${a.Guardian || 'N/A'}\n📚 Class: ${a.class} (${a.section || 'A'})\n📱 Phone: ${a.phone || 'N/A'}\n📍 Address: ${a.address || 'N/A'}\n📅 DOB: ${a.dob || 'N/A'}\n⚥ Gender: ${a.gender || 'N/A'}\n🕋 Religion: ${a.religion || 'N/A'}\n👥 Caste: ${a.caste || 'N/A'}\n📄 B-Form No: ${a.bForm || 'N/A'}\n🪪 Father/Guardian NIC: ${a.nic || 'N/A'}\n🔢 GR-Admission No: ${a.roll || 'N/A'}\n📆 Admission Date: ${a.admissionDate || 'N/A'}\n📚 Previous Class: ${a.prevClass || 'N/A'}\n🏫 Previous School: ${a.prevSchool || 'N/A'}\n📌 Status: ${a.status || 'Regular'}${a.discount ? ' (' + a.discount + '% off)' : ''}\n`;
       msg += '\n💰 FEE DETAILS\n───────────────────────────────────────\n';
@@ -3312,7 +3312,7 @@
         @media print{body{padding:20px;}.form{border:2px solid #000;}}</style>
         </head><body>
         <div class="form">
-          <div class="header"><h1>🏫 THE BRIGHT LINK SCHOOL PANJGUR</h1><h2>Student Admission Form</h2></div>
+          <div class="header"><h1>🏫 THE BRIGHT LINK TASP PANJGUR</h1><h2>Student Admission Form</h2></div>
           <div class="grid">
             <div><strong>Name:</strong> ${a.name}</div>
             <div><strong>Father:</strong> ${a.father}</div>
@@ -3379,7 +3379,7 @@
       
       let html = `<div style="font-family:Arial,sans-serif;padding:30px;max-width:100%;">
         <div style="text-align:center;border-bottom:3px solid #1a237e;padding-bottom:15px;margin-bottom:20px;">
-          <h1 style="color:#1a237e;font-size:24px;">🏫 THE BRIGHT LINK SCHOOL PANJGUR</h1>
+          <h1 style="color:#1a237e;font-size:24px;">🏫 THE BRIGHT LINK TASP PANJGUR</h1>
           <h2 style="color:#f9a825;font-size:18px;">Saved Admission Records</h2>
           <p style="color:#666;">Generated: ${new Date().toLocaleString()}</p>
           <p style="color:#666;">Total Records: ${items.length}</p>
@@ -3445,7 +3445,7 @@
       const mk = getMonthKey(month, year);
       const out = document.getElementById('dueReportOutput');
       
-      let text = `🏫 THE BRIGHT LINK SCHOOL PANJGUR\n`;
+      let text = `🏫 THE BRIGHT LINK TASP PANJGUR\n`;
       text += `⚠️ DUE FEE REPORT - ${month} ${year}\n`;
       text += '═'.repeat(50) + '\n\n';
       
@@ -3542,7 +3542,7 @@
       const month = document.getElementById('dueMonth').value || currentMonth;
       const year = document.getElementById('dueYear').value || currentYear;
       
-      let text = `🏫 THE BRIGHT LINK SCHOOL PANJGUR\n`;
+      let text = `🏫 THE BRIGHT LINK TASP PANJGUR\n`;
       text += `💰 EXPENDITURE REPORT - ${month} ${year}\n`;
       text += '═'.repeat(50) + '\n';
       text += `Generated: ${new Date().toLocaleString()}\n\n`;
@@ -3572,7 +3572,7 @@
     }
 
     function printExpenditureReport() {
-      let text = `🏫 THE BRIGHT LINK SCHOOL PANJGUR\n`;
+      let text = `🏫 THE BRIGHT LINK TASP PANJGUR\n`;
       text += '💰 EXPENDITURE REPORT\n';
       text += '═'.repeat(50) + '\n';
       text += `Generated: ${new Date().toLocaleString()}\n\n`;
@@ -3668,7 +3668,7 @@
       
       let html = `<div style="font-family:Arial,sans-serif;padding:20px;max-width:100%;">
         <div style="text-align:center;border-bottom:3px solid #1a237e;padding-bottom:10px;margin-bottom:16px;">
-          <h1 style="color:#1a237e;font-size:22px;">🏫 THE BRIGHT LINK SCHOOL PANJGUR</h1>
+          <h1 style="color:#1a237e;font-size:22px;">🏫 THE BRIGHT LINK TASP PANJGUR</h1>
           <h2 style="color:#f9a825;font-size:16px;">Timetable - ${cls} (${sec})</h2>
         </div>
         <table style="width:100%;border-collapse:collapse;font-size:12px;">
@@ -3773,7 +3773,7 @@
       
       let html = `<div style="font-family:Arial,sans-serif;padding:20px;max-width:100%;">
         <div style="text-align:center;border-bottom:3px solid #1a237e;padding-bottom:10px;margin-bottom:16px;">
-          <h1 style="color:#1a237e;font-size:22px;">🏫 THE BRIGHT LINK SCHOOL PANJGUR</h1>
+          <h1 style="color:#1a237e;font-size:22px;">🏫 THE BRIGHT LINK TASP PANJGUR</h1>
           <h2 style="color:#f9a825;font-size:16px;">Period Fixture</h2>
           <p style="color:#666;font-size:12px;">${cls} (${sec}) - ${date}</p>
         </div>
@@ -3932,7 +3932,7 @@
         
         const voucherContent = `
           <div class="voucher-preview">
-            <div class="voucher-header"><h2>🏫 THE BRIGHT LINK SCHOOL PANJGUR</h2><div class="sub" style="font-size:11px;color:rgba(255,255,255,0.8);">FEE VOUCHER</div></div>
+            <div class="voucher-header"><h2>🏫 THE BRIGHT LINK TASP PANJGUR</h2><div class="sub" style="font-size:11px;color:rgba(255,255,255,0.8);">FEE VOUCHER</div></div>
             <div class="voucher-detail">
               <div><span class="label">ID:</span> <span class="value">${s.id}</span></div>
               <div><span class="label">Name:</span> <span class="value">${s.name}</span></div>
@@ -4013,7 +4013,7 @@
         `<div class="voucher-detail" style="grid-template-columns:1fr;padding:3px 12px;margin-top:3px;"><div><span class="label">📍 Address:</span> <span class="value">${s.address}</span></div></div>` :
         '';
       container.innerHTML =
-        `<div class="voucher-preview"><div class="voucher-header"><h2>THE BRIGHT LINK SCHOOL PANJGUR</h2><div class="sub">FEE VOUCHER</div></div>
+        `<div class="voucher-preview"><div class="voucher-header"><h2>THE BRIGHT LINK TASP PANJGUR</h2><div class="sub">FEE VOUCHER</div></div>
         <div class="voucher-detail"><div><span class="label">ID:</span> <span class="value">${s.id}</span></div>
         <div><span class="label">Name:</span> <span class="value">${s.name}</span></div>
         <div><span class="label">Father:</span> <span class="value">${s.father}</span></div>
@@ -4086,7 +4086,7 @@
         balance = d.balance || 0;
         total = monthly + exam + other + lab + previousFee;
       }
-      let msg = `🏫 *THE BRIGHT LINK SCHOOL PANJGUR*\n🧾 *FEE VOUCHER*\n📅 ${month} ${year}\n\n👤 *${s.name}* (${s.id})\n👨 Father: ${s.father}\n📚 Class: ${s.class} (${s.section || 'A'})\n📍 Address: ${s.address || 'N/A'}\n\n💰 *FEE BREAKDOWN*\n────────────────────\n`;
+      let msg = `🏫 *THE BRIGHT LINK TASP PANJGUR*\n🧾 *FEE VOUCHER*\n📅 ${month} ${year}\n\n👤 *${s.name}* (${s.id})\n👨 Father: ${s.father}\n📚 Class: ${s.class} (${s.section || 'A'})\n📍 Address: ${s.address || 'N/A'}\n\n💰 *FEE BREAKDOWN*\n────────────────────\n`;
       if (admission > 0) msg += `Admission Fee: ${formatCurrency(admission)}\n`;
       if (monthly > 0) msg += `Monthly Fee: ${formatCurrency(monthly)}\n`;
       if (exam > 0) msg += `Exam Fee: ${formatCurrency(exam)}\n`;
@@ -4497,7 +4497,7 @@
         `
         <div style="font-family:Arial,sans-serif;padding:20px;max-width:100%;">
           <div style="text-align:center;border-bottom:3px solid #1a237e;padding-bottom:10px;margin-bottom:16px;">
-            <h1 style="color:#1a237e;font-size:22px;">🏫 THE BRIGHT LINK SCHOOL PANJGUR</h1>
+            <h1 style="color:#1a237e;font-size:22px;">🏫 THE BRIGHT LINK TASP PANJGUR</h1>
             <h2 style="color:#f9a825;font-size:16px;">Transaction History</h2>
             <p style="color:#666;font-size:12px;">Generated: ${new Date().toLocaleString()}</p>
           </div>
@@ -4572,7 +4572,7 @@
       const year = document.getElementById('rpYear').value;
 
       let text =
-        '════════════════════════════════════════════════════════════\n           🏦 THE BRIGHT LINK SCHOOL PANJGUR - ACCOUNTS REPORT\n';
+        '════════════════════════════════════════════════════════════\n           🏦 THE BRIGHT LINK TASP PANJGUR - ACCOUNTS REPORT\n';
       text += `           ${month} ${year}\n════════════════════════════════════════════════════════════\n\n`;
 
       let feeIncome = 0,
@@ -4625,7 +4625,7 @@
       const sec = document.getElementById('rpSection').value;
 
       let text =
-        '════════════════════════════════════════════════════════════\n           📝 THE BRIGHT LINK SCHOOL PANJGUR - ADMISSIONS REPORT\n';
+        '════════════════════════════════════════════════════════════\n           📝 THE BRIGHT LINK TASP PANJGUR - ADMISSIONS REPORT\n';
       text += `           Generated: ${new Date().toLocaleString()}\n════════════════════════════════════════════════════════════\n\n`;
 
       let admissions = savedAdmissions || [];
@@ -4669,7 +4669,7 @@
 
     function generateFullReport() {
       let text =
-        '════════════════════════════════════════════════════════════\n           🏫 THE BRIGHT LINK SCHOOL PANJGUR - COMPLETE STATEMENT\n';
+        '════════════════════════════════════════════════════════════\n           🏫 THE BRIGHT LINK TASP PANJGUR - COMPLETE STATEMENT\n';
       text += `           Generated: ${new Date().toLocaleString()}\n════════════════════════════════════════════════════════════\n\n`;
       let totalStudents = students.length,
         totalCollected = 0,
@@ -4713,7 +4713,7 @@
       const month = document.getElementById('rpMonth').value;
       const year = document.getElementById('rpYear').value;
       let text =
-        '════════════════════════════════════════════════════════════\n           📆 THE BRIGHT LINK SCHOOL PANJGUR - MONTHLY REPORT\n';
+        '════════════════════════════════════════════════════════════\n           📆 THE BRIGHT LINK TASP PANJGUR - MONTHLY REPORT\n';
       text += `           ${month} ${year}\n════════════════════════════════════════════════════════════\n\n`;
       let filtered = transactions;
       if (month !== 'All Months') filtered = filtered.filter(t => t.month === month);
@@ -4741,7 +4741,7 @@
       const month = document.getElementById('rpMonth').value;
       const year = document.getElementById('rpYear').value;
       let text =
-        '════════════════════════════════════════════════════════════\n           ⚠️ THE BRIGHT LINK SCHOOL PANJGUR - DEFAULTER REPORT\n';
+        '════════════════════════════════════════════════════════════\n           ⚠️ THE BRIGHT LINK TASP PANJGUR - DEFAULTER REPORT\n';
       text += `           ${month} ${year}\n════════════════════════════════════════════════════════════\n\n`;
       let defaulters = [];
       students.forEach(s => {
@@ -4776,7 +4776,7 @@
       const cls = document.getElementById('rpClass').value;
       const sec = document.getElementById('rpSection').value;
       let text =
-        '════════════════════════════════════════════════════════════\n           📚 THE BRIGHT LINK SCHOOL PANJGUR - CLASS SUMMARY\n';
+        '════════════════════════════════════════════════════════════\n           📚 THE BRIGHT LINK TASP PANJGUR - CLASS SUMMARY\n';
       text += `           ${cls} ${sec !== 'All Sections' ? '(' + sec + ')' : ''}\n════════════════════════════════════════════════════════════\n\n`;
       let filteredStudents = students;
       if (cls !== 'All Classes') filteredStudents = filteredStudents.filter(s => s.class === cls);
@@ -4827,7 +4827,7 @@
       else if (type === 'admissions') title = 'Admissions Report';
       else if (type === 'accounts') title = 'Accounts Report';
       const html =
-        `<div style="font-family:Arial,sans-serif;padding:20px;background:#fff;"><div style="text-align:center;border-bottom:3px solid #1a237e;padding-bottom:10px;margin-bottom:16px;"><h1 style="color:#1a237e;font-size:24px;">🏫 THE BRIGHT LINK SCHOOL PANJGUR</h1><h2 style="color:#f9a825;font-size:18px;">${title}</h2><p style="color:#666;font-size:12px;">Generated: ${new Date().toLocaleString()}</p></div><pre style="font-family:'Courier New',monospace;font-size:13px;white-space:pre-wrap;line-height:1.4;background:#f8f9fa;padding:16px;border-radius:8px;border:1px solid #e0e0e0;">${content}</pre><div style="text-align:center;color:#888;font-size:11px;margin-top:16px;border-top:1px solid #ddd;padding-top:8px;">🎓 Success with Wisdom!</div></div>`;
+        `<div style="font-family:Arial,sans-serif;padding:20px;background:#fff;"><div style="text-align:center;border-bottom:3px solid #1a237e;padding-bottom:10px;margin-bottom:16px;"><h1 style="color:#1a237e;font-size:24px;">🏫 THE BRIGHT LINK TASP PANJGUR</h1><h2 style="color:#f9a825;font-size:18px;">${title}</h2><p style="color:#666;font-size:12px;">Generated: ${new Date().toLocaleString()}</p></div><pre style="font-family:'Courier New',monospace;font-size:13px;white-space:pre-wrap;line-height:1.4;background:#f8f9fa;padding:16px;border-radius:8px;border:1px solid #e0e0e0;">${content}</pre><div style="text-align:center;color:#888;font-size:11px;margin-top:16px;border-top:1px solid #ddd;padding-top:8px;">🎓 Success with Wisdom!</div></div>`;
       const element = document.createElement('div');
       element.innerHTML = html;
       document.body.appendChild(element);
@@ -5113,7 +5113,7 @@
         `
         <div style="font-family:Arial,sans-serif;padding:20px;max-width:100%;">
           <div style="text-align:center;border-bottom:3px solid #1a237e;padding-bottom:10px;margin-bottom:16px;">
-            <h1 style="color:#1a237e;font-size:22px;">🏫 THE BRIGHT LINK SCHOOL PANJGUR</h1>
+            <h1 style="color:#1a237e;font-size:22px;">🏫 THE BRIGHT LINK TASP PANJGUR</h1>
             <h2 style="color:#f9a825;font-size:16px;">Promotion Report</h2>
             <p style="color:#666;font-size:12px;">Generated: ${new Date().toLocaleString()}</p>
           </div>
@@ -5334,7 +5334,7 @@
       if (!r) { showToast('⚠️ Result not found!', true); return; }
 
       let msg = '═══════════════════════════════════════\n';
-      msg += `  📝 THE BRIGHT LINK SCHOOL PANJGUR - RESULT CARD\n`;
+      msg += `  📝 THE BRIGHT LINK TASP PANJGUR - RESULT CARD\n`;
       msg += '═══════════════════════════════════════\n\n';
       msg += `👤 ${r.student_name} (${r.student_id})\n👨 Father: ${r.father || 'N/A'}\n📚 Class: ${r.class} (${r.section || 'A'})\n📝 Exam: ${r.exam}\n📅 Date: ${r.date}\n🎫 Seat No: ${r.seat_no || 'N/A'}\n`;
       msg += `🎯 Passing Marks: ${r.passing_marks || 33}%\n\n`;
@@ -5439,7 +5439,7 @@
         `
         <div style="font-family:Arial,sans-serif;padding:30px;max-width:700px;margin:auto;border:2px solid #1a237e;border-radius:12px;">
           <div style="text-align:center;border-bottom:3px solid #1a237e;padding-bottom:10px;margin-bottom:16px;">
-            <h1 style="color:#1a237e;font-size:22px;">🏫 THE BRIGHT LINK SCHOOL PANJGUR</h1>
+            <h1 style="color:#1a237e;font-size:22px;">🏫 THE BRIGHT LINK TASP PANJGUR</h1>
             <h2 style="color:#f9a825;font-size:16px;">Result Card</h2>
           </div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px 16px;font-size:13px;">
@@ -5602,7 +5602,7 @@
         `
         <div style="font-family:Arial,sans-serif;padding:20px;max-width:100%;">
           <div style="text-align:center;border-bottom:3px solid #1a237e;padding-bottom:10px;margin-bottom:16px;">
-            <h1 style="color:#1a237e;font-size:22px;">🏫 THE BRIGHT LINK SCHOOL PANJGUR</h1>
+            <h1 style="color:#1a237e;font-size:22px;">🏫 THE BRIGHT LINK TASP PANJGUR</h1>
             <h2 style="color:#f9a825;font-size:16px;">Staff Attendance Report</h2>
             <p style="color:#666;font-size:12px;">Date: ${date}</p>
             <p style="color:#666;font-size:12px;">Generated: ${new Date().toLocaleString()}</p>
@@ -5745,7 +5745,7 @@
         `
         <div style="font-family:Arial,sans-serif;padding:20px;max-width:100%;">
           <div style="text-align:center;border-bottom:3px solid #1a237e;padding-bottom:10px;margin-bottom:16px;">
-            <h1 style="color:#1a237e;font-size:22px;">🏫 THE BRIGHT LINK SCHOOL PANJGUR</h1>
+            <h1 style="color:#1a237e;font-size:22px;">🏫 THE BRIGHT LINK TASP PANJGUR</h1>
             <h2 style="color:#f9a825;font-size:16px;">Student Attendance Report</h2>
             <p style="color:#666;font-size:12px;">${summary}</p>
           </div>
@@ -5858,7 +5858,7 @@
       if (!e) return;
 
       let msg = '═══════════════════════════════════════\n';
-      msg += `  👨‍🏫 THE BRIGHT LINK SCHOOL PANJGUR - EMPLOYEE DETAIL\n`;
+      msg += `  👨‍🏫 THE BRIGHT LINK TASP PANJGUR - EMPLOYEE DETAIL\n`;
       msg += '═══════════════════════════════════════\n\n';
       msg +=
       `ID: ${e.id}\nName: ${e.name}\nGender: ${e.gender || 'N/A'}\nDOB: ${e.dob || 'N/A'}\nMobile: ${e.mobile || 'N/A'}\nDesignation: ${e.designation || 'N/A'}\nExperiment: ${e.experiment || 'N/A'}\nSubjects: ${e.subjects || 'N/A'}\nDepartment: ${e.department || 'N/A'}\nNIC: ${e.nic || 'N/A'}\nQualification: ${e.qualification || 'N/A'}\nHired: ${e.hired_date || 'N/A'}\n`;
@@ -5916,7 +5916,7 @@
         `
         <div style="font-family:Arial,sans-serif;padding:30px;max-width:800px;margin:auto;border:2px solid #1a237e;border-radius:12px;">
           <div style="text-align:center;border-bottom:3px solid #1a237e;padding-bottom:10px;margin-bottom:16px;">
-            <h1 style="color:#1a237e;font-size:22px;">🏫 THE BRIGHT LINK SCHOOL PANJGUR</h1>
+            <h1 style="color:#1a237e;font-size:22px;">🏫 THE BRIGHT LINK TASP PANJGUR</h1>
             <h2 style="color:#f9a825;font-size:16px;">Employee Profile / CV</h2>
           </div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px 24px;font-size:13px;">
@@ -5974,7 +5974,7 @@
       display.innerHTML = `
         <div class="certificate-box">
           <div class="cert-header">
-            <h1>🏫 THE BRIGHT LINK SCHOOL PANJGUR</h1>
+            <h1>🏫 THE BRIGHT LINK TASP PANJGUR</h1>
             <h2>School Leaving Certificate</h2>
             <div class="motto">"We Lead The Students"</div>
           </div>
@@ -6051,7 +6051,7 @@
       display.innerHTML = `
         <div class="certificate-box">
           <div class="cert-header">
-            <h1>🏫 THE BRIGHT LINK SCHOOL PANJGUR</h1>
+            <h1>🏫 THE BRIGHT LINK TASP PANJGUR</h1>
             <h2>Character Certificate</h2>
             <div class="motto">"We Lead The Students"</div>
           </div>
@@ -6111,7 +6111,7 @@
       display.innerHTML = `
         <div class="certificate-box">
           <div class="cert-header">
-            <h1>🏫 THE BRIGHT LINK SCHOOL PANJGUR</h1>
+            <h1>🏫 THE BRIGHT LINK TASP PANJGUR</h1>
             <h2>Experience Certificate</h2>
             <div class="motto">"We Lead The Students"</div>
           </div>
@@ -6328,7 +6328,7 @@
       const year = document.getElementById('accYear').value;
 
       let text =
-        `🏫 THE BRIGHT LINK SCHOOL PANJGUR\n`;
+        `🏫 THE BRIGHT LINK TASP PANJGUR\n`;
       text += `🏦 ACCOUNTS REPORT\n`;
       text += '═'.repeat(50) + '\n';
       text += `Period: ${month} ${year}\n`;
@@ -6389,7 +6389,7 @@
       loadUsers();
     });
 
-    console.log('🏫 THE BRIGHT LINK SCHOOL PANJGUR - Complete System v15.0');
+    console.log('🏫 THE BRIGHT LINK TASP PANJGUR - Complete System v15.0');
     console.log('✅ All modules working properly');
     console.log('✅ Data entry forms fully functional');
     console.log('✅ Professional color scheme applied');
